@@ -1,0 +1,288 @@
+#include <iostream>
+#include <ctime>
+using namespace std;
+
+int main() 
+{
+    // Declaração das variáveis
+    string nome, sexo, vivo;
+    int maior, menor, fome, higiene, inteligencia, ativo, energia, felicidade, saude, result, seed;
+    float idade;
+    char op;
+
+    // Geração da semente para funções de aleatoriedade
+    seed = time(0);
+    srand(seed);
+
+    // Solicitação do nome do Tamagotchi
+    cout << "Dê um nome para seu Tamagotchi!" << endl;
+    cin >> nome;
+
+    idade = 0;
+
+    // Solicitação do sexo ou escolha aleatória
+    cout << "Você deseja adotar um macho, uma fêmea ou deseja escolher aleatoriamente?" << endl;
+    cin >> sexo;
+
+    // Conversão para letra única para simplificar comparações
+    if (sexo == "Femea" || sexo == "fêmea") {
+        sexo = "F";
+    }
+
+    if (sexo == "Macho" || sexo == "macho") {
+        sexo = "M";
+    }
+
+    if (sexo == "aleatoriamente" || sexo == "aleatorio") {
+        // Escolha aleatória do sexo
+        srand(static_cast<unsigned>(time(0)));
+        maior = 2;
+        menor = 1;
+        result = rand() % (maior - menor + 1) + menor;
+        if (result == 2) {
+            sexo = "M";
+            cout << "Seu Tamagotchi é Macho!" << endl;
+        }
+        if (result == 1) {
+            sexo = "F";
+            cout << "Seu Tamagotchi é Fêmea!" << endl;
+        }
+    }
+
+    // Inicialização de atributos do Tamagotchi com valores aleatórios
+    fome = rand() % 50 + 50;
+    if (fome > 100) {
+        fome = 100;
+    }
+
+    higiene = rand() % 50 + 50;
+    if (higiene > 100) {
+        higiene = 100;
+    }
+
+    inteligencia = rand() % 50 + 50;
+    if (inteligencia > 100) {
+        inteligencia = 100;
+    }
+
+    energia = rand() % 50 + 50;
+    if (energia > 100) {
+        energia = 100;
+    }
+
+    felicidade = rand() % 50 + 50;
+    if (felicidade > 100) {
+        felicidade = 100;
+    }
+
+    saude = rand() % 50 + 50;
+    if (saude > 100) {
+        saude = 100;
+    }
+
+    ativo = rand() % 50 + 50;
+    if (ativo > 100) {
+        ativo = 100;
+    }
+
+    // Apresentação inicial do Tamagotchi
+    cout << endl;
+    cout << "Seu Tamagotchi acabou de sair do ovo!" << endl;
+
+    cout << "Nome: " << nome << endl;
+    cout << "Sexo: " << sexo << endl;
+    cout << "Idade: " << idade << endl;
+
+    cout << "---------------------------------------------------------" << endl;
+
+    cout << "Fome: " << fome << endl;
+    cout << "Higiene: " << higiene << endl;
+    cout << "Saúde: " << saude << endl;
+    cout << "Inteligência: " << inteligencia << endl;
+    cout << "Atividade: " << ativo << endl;
+    cout << "Energia: " << energia << endl;
+    cout << "Felicidade: " << felicidade << endl;
+
+    cout << "---------------------------------------------------------" << endl;
+
+    // Apresentação das opções disponíveis
+    cout << "Opções:" << endl;
+    cout << "1 - COMER" << endl;
+    cout << "2 - PRATICAR ESPORTE" << endl;
+    cout << "3 - LER" << endl;
+    cout << "4 - JOGAR" << endl;
+    cout << "5 - TOMAR BANHO" << endl;
+    cout << "6 - TOMAR REMEDIO" << endl;
+    cout << "7 - DORMIR" << endl;
+    cout << "8 - ENCERRAR" << endl;
+
+    cout << endl;
+    cout << "Selecione uma das opções: " << endl;
+    cin >> op;
+
+    // Loop principal do jogo
+    while (op != '8') {
+        switch (op) {
+            case '1':
+                idade += 0.5;
+                // Verificação da condição para comer
+                if (fome < 100 && (saude > 50 || (felicidade > 50))) {
+                    fome += 30;
+                    felicidade += 5;
+                    saude += 10;
+                    higiene += -10;
+                    energia += 20;
+
+                    // Mensagens de feedback
+                    cout << nome << " está enchendo o buxinho" << endl;
+                    cout << "fome +30" << endl;
+                    cout << "felicidade +5" << endl;
+                    cout << "saude +10" << endl;
+                    cout << "higiene -10" << endl;
+                    cout << "energia +20" << endl;
+                    cout << "* --------------------------------------------------------- *" << endl;
+                }
+                else if (fome == 100 && (felicidade > 70 || felicidade < 30)) {
+                    // Consequências se Tamagotchi estiver totalmente cheio
+                    saude += -10;
+                    felicidade += 10;
+                }
+                else
+                    cout << nome << " se recusa a comer." << endl;
+                break;
+
+            case '5':
+                idade += 0.5;
+                // Verificação da condição para tomar banho
+                if (higiene < 30 && felicidade > 10) {
+                    higiene += 100;
+                    felicidade += 10;
+                    saude += 10;
+                    cout << nome << " está tomando banho" << endl;
+                    cout << "Higiene foi enchida!" << endl;
+                    cout << "Felicidade +10" << endl;
+                    cout << "Saúde +10" << endl;
+                    cout << "* --------------------------------------------------------- *" << endl;
+                }
+                else
+                    cout << nome << " se recusou a tomar banho (eca)" << endl;
+                break;
+
+            case '2':
+                idade += 0.8;
+                // Verificação da condição para praticar esporte
+                if (energia > 40 && saude > 50) {
+                    cout << nome << " está jogando um futs" << endl;
+                    fome += -20;
+                    energia += -30;
+                    saude += 20;
+                    felicidade += 10;
+                    ativo += 10;
+                    higiene += -100;
+                    cout << "fome -20" << endl;
+                    cout << "energia -30" << endl;
+                    cout << "saude +20" << endl;
+                    cout << "felicidade +10" << endl;
+                    cout << "ativo +10" << endl;
+                    cout << "higiene -100" << endl;
+                    cout << "* --------------------------------------------------------- *" << endl;
+                }
+                else
+                    cout << nome << " se recusa a praticar esporte" << endl;
+                break;
+
+            case '3':
+                idade += 0.5;
+                // Verificação da condição para ler
+                if (energia > 30) {
+                    cout << nome << " está lendo algo muito interessante" << endl;
+                    inteligencia += 10;
+                    energia += -5;
+                    cout << "Inteligência +10" << endl;
+                    cout << "Energia -5" << endl;
+                    cout << "* --------------------------------------------------------- *" << endl;
+                }
+                else
+                    cout << nome << " se recusa a ser intelectual e ler." << endl;
+                break;
+
+            case '4':
+                idade += 0.5;
+                // Verificação da condição para jogar
+                if (energia > 10 || felicidade > 50) {
+                    cout << nome << " está jogando em seu PS5 :o" << endl;
+                    felicidade += 10;
+                    inteligencia += 5;
+                    higiene += -5;
+                    cout << "Felicidade +10" << endl;
+                    cout << "Inteligência +5" << endl;
+                    cout << "Higiene -5" << endl;
+                    cout << "* --------------------------------------------------------- *" << endl;
+                }
+                else
+                    cout << nome << " não quer jogar." << endl;
+                break;
+
+            case '6':
+                idade += 0.6;
+                // Verificação da condição para tomar remédio
+                if (saude < 30) {
+                    cout << nome << " está tomando um paracetamol" << endl;
+                    saude += 10;
+                    cout << "Saúde +10" << endl;
+                    cout << "* --------------------------------------------------------- *" << endl;
+                }
+                else
+                    cout << nome << " se recusa a tomar remédio." << endl;
+                break;
+
+            case '7':
+                idade += 0.9;
+                // Verificação da condição para dormir
+                if (energia < 30 && saude > 30) {
+                    cout << nome << " tirou um cochilo" << endl;
+                    energia += 100;
+                    cout << "Energia ficou cheia!" << endl;
+                    cout << "* --------------------------------------------------------- *" << endl;
+                }
+                if (energia < 30 && saude < 30) {
+                    cout << nome << " tirou um cochilo" << endl;
+                    energia += 30;
+                    saude += 10;
+                    cout << "Energia +30" << endl;
+                    cout << "Saúde +10" << endl;
+                    cout << "* --------------------------------------------------------- *" << endl;
+                }
+                else
+                    cout << nome << " se recusa a dormir." << endl;
+                break;
+
+            case '8':
+                cout << "Você encerrou o jogo." << endl;
+                return 0;
+                break;
+        }
+
+      // Apresentação do status atualizado do Tamagotchi
+      cout << "Opções:" << endl;
+      cout << "1 - COMER" << "                                    Fome: " << fome << endl;
+      cout << "2 - PRATICAR ESPORTE" << "                         Higiene: " << higiene << endl;
+      cout << "3 - LER" << "                                      Saúde: " << saude << endl;
+      cout << "4 - JOGAR" << "                                    Inteligência: " << inteligencia << endl;
+      cout << "5 - TOMAR BANHO" << "                              Atividade: " << ativo << endl;
+      cout << "6 - TOMAR REMEDIO" << "                            Energia: " << energia << endl;
+      cout << "7 - DORMIR" << "                                   Felicidade: " << felicidade << endl;
+      cout << "8 - ENCERRAR" << endl;
+
+        cout << endl;
+        cout << "Selecione uma das opções: " << endl;
+        cin >> op;
+
+        // Verificação da condição de velhice
+        if (idade > 8) {
+            cout << " após incontáveis anos de vida " << nome << " morreu em paz de velhice em sua cama." << endl;
+        }
+    }
+
+    return 0;
+}
