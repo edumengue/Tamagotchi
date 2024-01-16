@@ -1,19 +1,12 @@
 # Tamagotchi C++ Game
 
-## Descrição do Projeto
-Este projeto implementa um jogo simples de Tamagotchi em C++. O Tamagotchi é uma mascote virtual que você precisa cuidar, alimentar, brincar e manter saudável para que ele possa viver uma vida feliz.
+## Project Description
+This project implements a simple Tamagotchi game in C++. Tamagotchi is a virtual pet that you need to take care of, feed, play with, and keep healthy to ensure a happy life.
 
-## Lógica de Programação
+## Programming Logic
 
-O jogo utiliza uma abordagem procedural para organizar as ações do Tamagotchi e interações do jogador. Além disso, algumas das principais lógicas implementadas incluem:
+The game uses a procedural approach to organize Tamagotchi's actions and player interactions. Additionally, some of the key implemented logics include:
 
-- **Geração Aleatória:** A escolha aleatória do sexo do Tamagotchi é implementada usando a biblioteca `rand()` para gerar números pseudoaleatórios.
-- **Tomada de Decisão:** O jogo utiliza estruturas condicionais (`if`, `else if`, `else`) para tomar decisões com base nas condições atuais do Tamagotchi, como fome, saúde e felicidade.
-- **Loop de Jogo:** Um loop `while` é usado para permitir que o jogador interaja com o Tamagotchi várias vezes até optar por encerrar o jogo.
-
-## Funcionalidades
-
-- **Adoção do Tamagotchi:** O jogador pode escolher o nome e o sexo do Tamagotchi ou optar por uma escolha aleatória.
-- **Atributos do Tamagotchi:** O Tamagotchi tem atributos como fome, higiene, saúde, inteligência, atividade, energia e felicidade.
-- **Ações do Jogador:** O jogador pode realizar diversas ações para cuidar do Tamagotchi, como comer, praticar esportes, ler, jogar, tomar banho, tomar remédio e dormir.
-- **Feedback Visual:** O jogo fornece feedback visual sobre as ações realizadas, mostrando mudanças nos atributos do Tamagotchi.
+- **Random Generation:** The random choice of Tamagotchi's gender is implemented using the `rand()` library to generate pseudo-random numbers.
+- **Decision Making:** The game uses conditional structures (`if`, `else if`, `else`) to make decisions based on Tamagotchi's current conditions, such as hunger, health, and happiness.
+- **Game Loop:** A `while` loop is used to allow the player to interact with Tamagotchi multiple times until choosing to end the game.
